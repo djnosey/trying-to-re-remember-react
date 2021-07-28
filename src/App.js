@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Navbar from "./Navbar";
+import NewTodoForm from "./NewTodoForm";
+import Todos from "./Todos";
+import { useState } from "react";
 
 function App() {
+  const [todos, setTodos] = useState([]);
+
+  const addTodo = (todo) => {
+    let copyOfState = [...todos];
+    let newState = [...copyOfState, todo];
+    setTodos(newState);
+  };
+
+  const deleteTodo = (id) => {
+    let copyOfState = [...todos];
+    let newState = copyOfState.filter((todo) => todo.id !== id);
+    setTodos(newState);
+  };
+
+  console.log(todos);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar />
+      <NewTodoForm addTodo={addTodo} />
+      <Todos todos={todos} deleteTodo={deleteTodo} />
     </div>
   );
 }
