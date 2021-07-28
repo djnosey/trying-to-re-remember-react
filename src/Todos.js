@@ -7,7 +7,12 @@ function Todos(props) {
       <ul>
         {props.todos.map((todo) => {
           return (
-            <li key={todo.id}>
+            <li className={todo.completed ? "green-background" : ""} key={todo.id}>
+              <input
+                onChange={() => props.completeTodo(todo.id)}
+                name="completed"
+                type="checkbox"
+              ></input>
               {todo.title}
               {todo.content}
               <button onClick={() => props.deleteTodo(todo.id)}>Delete</button>

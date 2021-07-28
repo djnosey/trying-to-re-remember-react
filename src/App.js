@@ -19,13 +19,23 @@ function App() {
     setTodos(newState);
   };
 
+  const completeTodo = (id) => {
+    let copyOfState = [...todos]
+    let index = copyOfState.findIndex(todo => todo.id === id)
+    copyOfState[index].completed = !copyOfState[index].completed
+    setTodos(copyOfState)
+  }
+
   console.log(todos);
 
   return (
     <div className="App">
       <Navbar />
       <NewTodoForm addTodo={addTodo} />
-      <Todos todos={todos} deleteTodo={deleteTodo} />
+      <br></br>
+      <hr></hr>
+      <br></br>
+      <Todos todos={todos} completeTodo={completeTodo} deleteTodo={deleteTodo} />
     </div>
   );
 }

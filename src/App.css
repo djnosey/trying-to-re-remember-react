@@ -3,3 +3,21 @@
   width: fit-content;
   margin: auto;
 }
+
+.green-background {
+  background-color: green;
+}
+
+li {
+  list-style-type: none;
+  width: 50%;
+  margin:auto;
+}
+
+button{
+  margin: 20px;
+}
+
+input {
+  margin: 20px;
+}
